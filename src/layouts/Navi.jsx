@@ -1,9 +1,20 @@
-import React from 'react'
-import { Button,Navbar,Container,NavDropdown,Nav,Form,FormControl } from 'react-bootstrap';
+import React,{useState} from 'react'
+import { Navbar,Container,DropdownButton,NavDropdown,Nav } from 'react-bootstrap';
 import CartSummary from "./CartSummary"
+import SıgnedIn from './SıgnedIn';
+import SıgnedOut from './SıgnedOut';
 
 
 export default function Navi() {
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
+
+  function handleSignOut() {
+    setIsAuthenticated(false)
+  }
+
+  function handleSignIn() {
+    setIsAuthenticated(true)
+  }
     return (
         <div>
 
@@ -24,16 +35,9 @@ export default function Navi() {
         <NavDropdown title="Link" id="navbarScrollingDropdown">
              <CartSummary></CartSummary>
         </NavDropdown>
-      
-      <Form className="d-flex">
-        <FormControl
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-        />
-        <Button variant="outline-success">Search</Button>
-      </Form>
+        {isAuthenticated?<SıgnedIn signOut={handleSignOut}/>  :<SıgnedOut signIn={handleSignIn} />}
+ 
+       
     </Navbar.Collapse>
   </Container>
 </Navbar>

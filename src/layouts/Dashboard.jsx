@@ -1,6 +1,6 @@
 import React from 'react'
+import { Route} from 'react-router-dom'
 import PaymentList from '../pages/PaymentList'
-import userList from '../pages/userList'
 import Categories from './Categories'
 import Navi from './Navi'
 
@@ -9,7 +9,10 @@ export default function Dashboard() {
     <div>
         <Navi/>
         <Categories/>
+        <div>
         <PaymentList/> 
+        <Route path="/" />
+    </div>
     </div>
   )
 }
