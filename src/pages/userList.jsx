@@ -1,46 +1,81 @@
 import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap';
+import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import UserService from '../Sevices/UserService';
 
 
-export default function userList() {
-  
+export default function UserList() {
+
     const [users, setUsers] = useState([])
 
 
     useEffect(() => {
         let userService = new UserService()
         userService.getUser().then(result => setUsers(result.data.data))
+     },[])
 
-    })
-   
     return (
 
         <div>
-            <Table striped="columns" size="sm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Fotoğraf</th>
-                        <th>Adı</th>
-                        <th>Soy Adı</th>
-                        <th>Ödeme Durumu</th>
+            <Table celled>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>Fotoğraf</Table.HeaderCell>
+                        <Table.HeaderCell>Adı</Table.HeaderCell>
+                        <Table.HeaderCell>Soy Adı</Table.HeaderCell>
+                        <Table.HeaderCell>Ödeme Durumu</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map((users) => (
-                        <tr key={users.id}>
+                <Table.Body>
+                    {
+                        users.map(users => (
+                            <Table.Row key={users.id}>
 
-                            <td>{users.name}</td>
-                            <td>{users.state}</td>
-                            <td>{users.surName}</td>
-                            <td>{users.email}</td>
-                            <td>{users.photo}</td>
+                                <Table.Cell>{users.photo}</Table.Cell>
+                                <Table.Cell >{users.name}</Table.Cell>
+                                <Table.Cell>{users.surName}</Table.Cell>
+                                <Table.Cell>{users.state ? (
+                                    <Label color="green">
+                                        <Icon name="check" size="large" />
+                                    </Label>
+                                ) : (
+                                    <Label
+                                        basic
+                                        color="red"
+                                        style={{ marginLeft: "0.5em", fontSize: "0.80em" }}
+                                    >
+                                        <Icon name="hourglass two" />
+                                        Ödeme Bekleniyor
+                                    </Label>
+                                )}</Table.Cell>
 
-                        </tr>
-                    ))}
-                </tbody>
+
+
+                            </Table.Row>
+                        ))
+                    }
+
+
+                </Table.Body>
+
+                <Table.Footer>
+                    <Table.Row>
+                        <Table.HeaderCell colSpan='3'>
+                            <Menu floated='right' pagination>
+                                <Menu.Item as='a' icon>
+                                    <Icon name='chevron left' />
+                                </Menu.Item>
+                                <Menu.Item as='a'>1</Menu.Item>
+                                <Menu.Item as='a'>2</Menu.Item>
+                                <Menu.Item as='a'>3</Menu.Item>
+                                <Menu.Item as='a'>4</Menu.Item>
+                                <Menu.Item as='a' icon>
+                                    <Icon name='chevron right' />
+                                </Menu.Item>
+                            </Menu>
+                        </Table.HeaderCell>
+                    </Table.Row>
+                </Table.Footer>
             </Table></div>
     )
 }

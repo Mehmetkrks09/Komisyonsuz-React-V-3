@@ -1,8 +1,10 @@
-import React,{useState} from 'react'
-import { Navbar,Container,DropdownButton,NavDropdown,Nav } from 'react-bootstrap';
-import CartSummary from "./CartSummary"
-import SıgnedIn from './SıgnedIn';
-import SıgnedOut from './SıgnedOut';
+import React, { useState } from 'react'
+import { Button, Dropdown, Menu, Container } from 'semantic-ui-react'
+import CartSummary from '../layouts/CartSummary'
+import SignedIn from './SignedIn'
+import SignedOut from './SignedOut'
+
+
 
 
 export default function Navi() {
@@ -15,32 +17,46 @@ export default function Navi() {
   function handleSignIn() {
     setIsAuthenticated(true)
   }
-    return (
-        <div>
+  return (
 
-         <Navbar bg="light" expand="lg">
-  <Container container-fluid>
-    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
-    <Navbar.Toggle aria-controls="navbarScroll" />
-    <Navbar.Collapse id="navbarScroll">
-      <Nav
-        className="me-auto my-2 my-lg-0"
-        style={{ maxHeight: '100px' }}
-        navbarScroll
-      >
-        <Nav.Link href="#action1">Home</Nav.Link>
-        
-      </Nav>
-     
-        <NavDropdown title="Link" id="navbarScrollingDropdown">
-             <CartSummary></CartSummary>
-        </NavDropdown>
-        {isAuthenticated?<SıgnedIn signOut={handleSignOut}/>  :<SıgnedOut signIn={handleSignIn} />}
- 
+    <div>
+      {/* <Menu inverted fixed="top">
+        <Container>
+          <Menu.Item name="home" />
+          <Menu.Item name="messages" />
+
+          <Menu.Menu position="right">
+           
+            {isAuthenticated?<signedIn signOut={handleSignOut} />
+            :<signOut signIn={handleSignIn}/>}  
+          </Menu.Menu>
+        </Container>
+      </Menu> */}
+
+
+
+
+      <Menu inverted="top">
+        <Container>
+        <Menu.Item
+          name='home'
+
+        />
+        <Menu.Item
+          name='messages'
+
+        />
+
+        <Menu.Menu position='right'>
+
+         <CartSummary/>
+         {isAuthenticated?<SignedIn  signOut={handleSignOut}/>:   <SignedOut signIn={handleSignIn}/>}
        
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
-        </div>
-    )
+         
+         
+        </Menu.Menu>
+        </Container>
+      </Menu>
+    </div>
+  )
 }
