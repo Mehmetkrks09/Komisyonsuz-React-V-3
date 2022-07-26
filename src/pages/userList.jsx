@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { Icon, Label, Menu, Table } from 'semantic-ui-react'
 import UserService from '../Sevices/UserService';
 
@@ -32,7 +33,7 @@ export default function UserList() {
                             <Table.Row key={users.id}>
 
                                 <Table.Cell>{users.photo}</Table.Cell>
-                                <Table.Cell >{users.name}</Table.Cell>
+                                <Table.Cell > <Link to={`/users/${users.id}`}>{users.name}</Link></Table.Cell>
                                 <Table.Cell>{users.surName}</Table.Cell>
                                 <Table.Cell>{users.state ? (
                                     <Label color="green">

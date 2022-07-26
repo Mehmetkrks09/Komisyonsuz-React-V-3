@@ -9,4 +9,7 @@ export default class UserService {
         return axios.post("http://localhost:8080/api/user/add");
 
     }
+    findById(user){
+         return axios.get("http://localhost:8080/api/user/findById?id="+user)
+    }
 }
