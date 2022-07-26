@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom'
 import PaymentList from '../pages/PaymentList';
 import UserDetail from '../pages/UserDetail';
 import UserRegister from '../pages/UserRegister';
+import CreateDayJoin from '../pages/CreateDayJoin';
 
 export default function Dashboard() {
   return (
@@ -21,6 +22,7 @@ export default function Dashboard() {
             <Route></Route>
          
             <Route exact path="/"  />
+            <Route exact path="/createDay" component={CreateDayJoin} />
             <Route exact path="/users" component={UserList} />
             <Route exact path="/userAd" component={UserRegister} />
             <Route exact path="/users/:id" component={UserDetail} />
