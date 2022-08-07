@@ -10,16 +10,20 @@ import {useHistory} from "react-router"
 
 export default function Navi() {
   const history =useHistory()
-  const [isAuthenticated, setIsAuthenticated] = useState(true)
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   function handleSignOut() {
     setIsAuthenticated(false)
-    history.push("/")
+    // history.push("/")
+   history.push("/")
   }
 
   function handleSignIn() {
     setIsAuthenticated(true)
+    //history.push("/createDay")
   }
+
   return (
 
     <div>
@@ -53,8 +57,8 @@ export default function Navi() {
         <Menu.Menu position='right'>
 
          <CartSummary/>
-         {isAuthenticated?<SignedIn  signOut={handleSignOut}/>:   <SignedOut signIn={handleSignIn}/>}
-       
+         {isAuthenticated?<SignedIn  signOut={handleSignOut}/>:   <SignedOut signIn={handleSignIn}/>} 
+
          
          
         </Menu.Menu>

@@ -201,7 +201,7 @@ export default function UserRegister() {
                         </Form.Field>
                         
                         <Button
-                            content="Ekle"
+                            content="Kayıt Ol"
                             labelPosition="right"
                             icon="add"
                             positive

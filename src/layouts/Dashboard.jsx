@@ -7,6 +7,10 @@ import PaymentList from '../pages/PaymentList';
 import UserDetail from '../pages/UserDetail';
 import UserRegister from '../pages/UserRegister';
 import CreateDayJoin from '../pages/CreateDayJoin';
+import UserProfileUpdate from '../pages/UserProfileUpdate';
+import UserPhoto from '../pages/UserPhoto';
+import CreateDayPayment from '../pages/CreateDayPayment';
+import Login from '../pages/Login';
 
 export default function Dashboard() {
   return (
@@ -22,6 +26,10 @@ export default function Dashboard() {
             <Route></Route>
          
             <Route exact path="/"  />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dayPayment" component={CreateDayPayment} />
+            <Route exact path="/userPhoto" component={UserPhoto} />
+            <Route exact path="/userUpdate" component={UserProfileUpdate} />
             <Route exact path="/createDay" component={CreateDayJoin} />
             <Route exact path="/users" component={UserList} />
             <Route exact path="/userAd" component={UserRegister} />

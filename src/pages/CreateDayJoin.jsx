@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -13,46 +13,61 @@ import {
 import { toast } from 'react-toastify';
 import CreateDayService from '../Sevices/CreateDayService';
 import UserService from '../Sevices/UserService';
+import PaymentService from '../Sevices/PaymentService';
+
 
 export default function CreateDayJoin() {
 
-let createDayService=new CreateDayService();
-let userService = new UserService();
-
-    const CreateDaySchema = Yup.object().shape({
-       
-      });
+  var UserId = 14
 
 
-    const formik = useFormik({
-        initialValues: {
-        amount: 0,
-        id: 0,
-        paymentId: 0,
-        userId: 0,
-        userQueu: 0,
-        month: 0,
-        fullName:"",
-        skt:"",
-        cvc:""
-      
-        },
-        validationSchema: CreateDaySchema,
-    onSubmit: (values) => {
-        console.log(values);
-    // values.userId = userId;
-    // createDayService.
-     // jobAdService.add(values).then((result) => console.log(result.data.data));
-      toast.warning(
-        "İş ilanı eklendi personelin onayı ardından listelenecektir"
-      );
-     // console.log(values);
-    },
+
+  let createService = new CreateDayService()
+
+
+  const CreateDaySchema = Yup.object().shape({
+
+    //------------------------------------
   });
+
+
+
+
+  const formik = useFormik({
+    initialValues: {
+      amount: 0,
+      id: 0,
+      paymentId: 0,
+      userId: UserId,
+      userQueu: 0,
+      month: 0,
+      fullName: "",
+      skt: "",
+      cvc: ""
+
+    },
+    enableReinitialize: true,
+    validationSchema: CreateDaySchema,
+
+    onSubmit: (values) => {
+      console.log(values);
+
+      // 
+
+      createService.postCreateDay(values).then((result) => console.log(result.data.message))
+
+
+
+
+    },
+
+  }
+
+  );
 
   return (
     <div>
-       <Card fluid>
+      <Card fluid>
         <Card.Content header="Güne Katıl" />
         <Card.Content>
           <Form onSubmit={formik.handleSubmit}>
@@ -60,7 +75,7 @@ let userService = new UserService();
               <Grid stackable>
                 <Grid.Column width={8}>
                   <label style={{ fontWeight: "bold" }}>
-                   Miktar
+                    Miktar
                   </label>
                   <Input
                     style={{ width: "100%" }}
@@ -79,7 +94,7 @@ let userService = new UserService();
                 </Grid.Column>
                 <Grid.Column width={8}>
                   <label style={{ fontWeight: "bold" }}>
-                  Ay 
+                    Ay
                   </label>
                   <Input
                     style={{ width: "100%" }}
@@ -96,28 +111,28 @@ let userService = new UserService();
                     </div>
                   )}
                 </Grid.Column>
-            
-               
-                <label style={{ fontWeight: "bold"}}>
+
+
+                <label style={{ fontWeight: "bold" }}>
                   Ad Soyad
-                  </label>
-                  <Input
-                    style={{ width: "100%" }}
-                    placeholder="Ad Soyad"
-                    value={formik.values.fullName}
-                    name="fullName"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                   {formik.errors.fullName && formik.touched.fullName && (
-                    <div className={"ui pointing red basic label"}>
-                      {formik.errors.fullName}
-                    </div>
-                  )}
-              
+                </label>
+                <Input
+                  style={{ width: "100%" }}
+                  placeholder="Ad Soyad"
+                  value={formik.values.fullName}
+                  name="fullName"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors.fullName && formik.touched.fullName && (
+                  <div className={"ui pointing red basic label"}>
+                    {formik.errors.fullName}
+                  </div>
+                )}
+
                 <Grid.Column width={5}>
                   <label style={{ fontWeight: "bold" }}>
-                  Son Kullanma Tarihi
+                    Son Kullanma Tarihi
                   </label>
                   <Input
                     style={{ width: "100%" }}
@@ -133,12 +148,12 @@ let userService = new UserService();
                       {formik.errors.skt}
                     </div>
                   )}
-                
+
                 </Grid.Column>
-               
+
                 <Grid.Column width={5}>
                   <label style={{ fontWeight: "bold" }}>
-                 Cvc
+                    Cvc
                   </label>
                   <Input
                     style={{ width: "100%" }}
@@ -154,14 +169,14 @@ let userService = new UserService();
                       {formik.errors.cvc}
                     </div>
                   )}
-                  
+
                 </Grid.Column>
-               
+
 
               </Grid>
               <label>3D Secure Güvenli Ödeme Kullanılmaktadır</label>
             </Form.Field>
-            
+
             <Button
               content="Ekle"
               labelPosition="right"
@@ -171,7 +186,8 @@ let userService = new UserService();
               style={{ marginLeft: "20px" }}
             />
 
-        </Form>
+
+          </Form>
         </Card.Content>
       </Card>
     </div>

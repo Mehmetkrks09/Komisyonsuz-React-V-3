@@ -12,6 +12,7 @@ export default function UserList() {
     useEffect(() => {
         let userService = new UserService()
         userService.getUser().then(result => setUsers(result.data.data))
+      
      },[])
 
     return (
@@ -32,7 +33,7 @@ export default function UserList() {
                         users.map(users => (
                             <Table.Row key={users.id}>
   
-                                <Table.Cell><img class="ui tiny image" src= {users.photo}/></Table.Cell>
+                                <Table.Cell><img class="ui tiny bordered image" src= {users.photo}/></Table.Cell>
                                 <Table.Cell > <Link to={`/users/${users.id}`}>{users.name}</Link></Table.Cell>
                                 <Table.Cell>{users.surName}</Table.Cell>
                                 <Table.Cell>{users.state ? (
