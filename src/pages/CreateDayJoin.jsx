@@ -9,6 +9,7 @@ import {
   Grid,
 } from "semantic-ui-react";
 import CreateDayService from '../Sevices/CreateDayService';
+import { toast } from "react-toastify";
 
 
 export default function CreateDayJoin() {
@@ -49,7 +50,7 @@ export default function CreateDayJoin() {
 
       // 
 
-      createService.postCreateDay(values).then((result) => console.log(result.data.message))
+      createService.postCreateDay(values).then((result) => result.data.success?toast.success(result.data.message):toast.error(result.data.message))
 
 
 

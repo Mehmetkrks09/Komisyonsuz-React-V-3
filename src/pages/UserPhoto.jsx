@@ -1,13 +1,14 @@
 
 import React, { Component } from "react";
-import { toast } from "react-toastify";
+import {toast} from 'react-toastify'
 import { Card, Button } from "semantic-ui-react";
 import UserService from "../Sevices/UserService";
 
 
 
-export default class UserPhoto extends Component {
 
+export default class UserPhoto extends Component {
+  
     
 
   state = {
@@ -36,10 +37,13 @@ export default class UserPhoto extends Component {
 
 
     try {
+   
      
       userService.postPhoto(1, fd).then((res) => {
-        // console.log(res.data.message);
+    
         toast.success(res.data.message);
+        console.log(res.data.message);
+        
       });
     } catch (error) {
       toast.error("Yeniden deneyiniz");

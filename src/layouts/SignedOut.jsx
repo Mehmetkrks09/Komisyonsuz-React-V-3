@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'semantic-ui-react'
-import { Link, useHistory } from "react-router-dom";
-import Login from '../pages/Login';
+import { Link } from "react-router-dom";
 
 
 export default function SignedOut({signIn}) {
