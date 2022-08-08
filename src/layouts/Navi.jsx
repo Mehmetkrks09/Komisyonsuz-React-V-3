@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Menu, Container } from 'semantic-ui-react'
-import CartSummary from '../layouts/CartSummary'
+import { Menu, Container,Header } from 'semantic-ui-react'
 import SignedIn from './SignedIn'
 import SignedOut from './SignedOut'
 import {useHistory} from "react-router"
+import { Link } from "react-router-dom";
+
 
 
 
@@ -45,18 +46,16 @@ export default function Navi() {
 
       <Menu inverted="top">
         <Container>
-        <Menu.Item
-          name='home'
-
-        />
-        <Menu.Item
-          name='messages'
-
-        />
+          
+        <Menu.Item  name="Ana Sayfa"  as={Link} to={"/users"}>
+          <Header as="h4" color="blue" className="orbitron" icon="cube" content="Altın Günü" />
+            
+          </Menu.Item>
+        
 
         <Menu.Menu position='right'>
 
-         <CartSummary/>
+         {/* <CartSummary/> */}
          {isAuthenticated?<SignedIn  signOut={handleSignOut}/>:   <SignedOut signIn={handleSignIn}/>} 
 
          

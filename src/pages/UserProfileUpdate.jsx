@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, Input, Card, Form } from "semantic-ui-react";
+import { Button, Card, Form } from "semantic-ui-react";
 import { toast } from "react-toastify";
 import UserService from '../Sevices/UserService';
-import { Component, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 
 export default function UserProfileUpdate() {
 
@@ -12,7 +12,7 @@ export default function UserProfileUpdate() {
     let userService = new UserService()
     useEffect(() => {
         
-        userService.findById(23).then(result => setUsers(result.data.data))
+        userService.findById(1).then(result => setUsers(result.data.data))
      },[])
 
 
@@ -22,9 +22,6 @@ export default function UserProfileUpdate() {
     });
 
 
-   
-
-  
 
     const formik = useFormik({
         
@@ -52,14 +49,6 @@ export default function UserProfileUpdate() {
       
         },  
     });
-
-
-  
-
-   
-       
-    
-    
 
     return (
         <div>

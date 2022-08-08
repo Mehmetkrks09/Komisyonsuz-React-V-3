@@ -13,7 +13,7 @@ export default function SignedOut({signIn}) {
     <div>
          
 
-         <Button primary  as={Link} to={"/login"}   >Giriş Yap</Button>
+         <Button primary  as={Link} to={"/login"} onClick={signIn}  >Giriş Yap</Button>
          <Button primary style={{marginLeft:'0.5em'}}  as={Link} to={"/userAd"}> Kayıt Ol</Button>
 
         

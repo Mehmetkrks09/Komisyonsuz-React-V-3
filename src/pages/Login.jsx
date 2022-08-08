@@ -1,56 +1,43 @@
 import React from 'react'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
     Button,
-    TextArea,
     Card,
     Form,
-    Input,
 } from "semantic-ui-react";
-import { toast, Toastify } from "react-toastify";
 import UserService from "../Sevices/UserService";
-import SignedIn from '../layouts/SignedIn';
-import SignedOut from '../layouts/SignedOut';
 
 
-export default function Login({signIn}) {
 
-   
-function Login(values) {
-    if (values.email == user.email && values.password == user.password) {
-
-        history.push("/createDay")
-
-       
+export default function Login({ signIn }) {
 
 
+    function Login(values) {
+        if (values.email === user.email && values.password === user.password) {
+
+            history.push("/createDay")
+
+        }
+        else {
+            console.log("Şifre Veya Email Hatalı");
+        }
 
     }
-    else
-    {
-        console.log("Şifre Veya Email Hatalı");
-    }
-    
-}
-
     let userService = new UserService();
-
-
-    
     const [user, setUser] = useState({})
-    const history =useHistory()
+    const history = useHistory()
 
     // const [isAuthenticated, setIsAuthenticated] = useState(false)
-  
+
     // function handleSignOut() {
     //   setIsAuthenticated(false)
     //   // history.push("/")
     //  history.push("/")
     // }
-  
+
     // function handleSignIn() {
     //   setIsAuthenticated(true)
     //   //history.push("/createDay")
@@ -84,16 +71,16 @@ function Login(values) {
             //  console.log(values);
             userService.getByMail(values.email).then(result => setUser(result.data.data))
             //  console.log(users.email);
-            
+
             Login(values);
-           
-            onclick={signIn}
-                
+
+            onclick = { signIn }
+
         },
 
     });
 
-   
+
 
 
     return (

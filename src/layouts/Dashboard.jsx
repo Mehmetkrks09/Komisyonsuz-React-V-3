@@ -3,7 +3,6 @@ import UserList from '../pages/UserList'
 import Categories from './Categories'
 import { Grid } from "semantic-ui-react";
 import { Route } from 'react-router-dom'
-import PaymentList from '../pages/PaymentList';
 import UserDetail from '../pages/UserDetail';
 import UserRegister from '../pages/UserRegister';
 import CreateDayJoin from '../pages/CreateDayJoin';

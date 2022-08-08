@@ -1,8 +1,9 @@
 
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { Card, Button } from "semantic-ui-react";
 import UserService from "../Sevices/UserService";
+
 
 
 export default class UserPhoto extends Component {
@@ -10,10 +11,9 @@ export default class UserPhoto extends Component {
     
 
   state = {
-    selectedFile: null,
+    selectedFile: null,  
   };
 
- 
 
   fileSelectedHandler = (event) => {
     this.setState({
@@ -21,7 +21,7 @@ export default class UserPhoto extends Component {
     });
   };
 
-  fileUploadHandler = () => {
+  fileUploadHandler = () => { 
     const fd = new FormData();
     fd.append(
       "multipartFile",
@@ -37,8 +37,8 @@ export default class UserPhoto extends Component {
 
     try {
      
-      userService.postPhoto(23, fd).then((res) => {
-        console.log(res.data.message);
+      userService.postPhoto(1, fd).then((res) => {
+        // console.log(res.data.message);
         toast.success(res.data.message);
       });
     } catch (error) {

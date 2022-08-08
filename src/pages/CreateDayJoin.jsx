@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react'
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
   Button,
-  Dropdown,
   Input,
-  TextArea,
   Card,
   Form,
   Grid,
 } from "semantic-ui-react";
-import { toast } from 'react-toastify';
 import CreateDayService from '../Sevices/CreateDayService';
-import UserService from '../Sevices/UserService';
-import PaymentService from '../Sevices/PaymentService';
 
 
 export default function CreateDayJoin() {
 
-  var UserId = 14
+  var UserId = 1
 
 
 

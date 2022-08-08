@@ -1,15 +1,15 @@
 import React from 'react'
-import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import {
     Button,
     TextArea,
     Card,
     Form,
-    Input,
+   
 } from "semantic-ui-react";
-import { toast, Toastify } from "react-toastify";
+import { toast } from "react-toastify";
 import UserService from "../Sevices/UserService";
 
 
@@ -66,10 +66,10 @@ export default function UserRegister() {
         
     });
  
-    const handleChangeSemantic = (value, fieldName) => {
-        formik.setFieldValue(fieldName, value);
+    // const handleChangeSemantic = (value, fieldName) => {
+    //     formik.setFieldValue(fieldName, value);
         
-    };
+    // };
 
 
     return (

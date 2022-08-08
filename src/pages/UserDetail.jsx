@@ -1,24 +1,24 @@
-import React, { useState,useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { Button, Card, Image } from 'semantic-ui-react';
-import UserService from '../Sevices/UserService';
+// import React, { useState } from 'react'
+// import { useParams } from 'react-router-dom'
+import { Card} from 'semantic-ui-react';
+// import UserService from '../Sevices/UserService';
 
 export default function UserDetail() {
 
- let {id}= useParams()
+//  let {id}= useParams()
 
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
 
 
-    useEffect(() => {
-        let userService = new UserService()
-        userService.findById(id).then(result => setUser(result.data.data))
-     },[])
+  //   useEffect(() => {
+  //       let userService = new UserService()
+  //       userService.findById(id).then(result => setUser(result.data.data))
+  //    },[])
    
   return (
     <div> 
      
-         <Card.Group>
+         {/* <Card.Group>
     <Card fluid>
       <Card.Content>
         <Image
@@ -44,7 +44,14 @@ export default function UserDetail() {
       </Card.Content>
     </Card>
   
-  </Card.Group>
+  </Card.Group> */}
+     <Card
+    image=' https://pickaface.net/gallery/avatar/20120409_144914_213_pp.png'
+    header='Mehmet Karakaş'
+    meta='Worker'
+    description='Mehmet is a Coder.'
+   
+  />
 
   </div>
   )
