@@ -3,13 +3,13 @@ import axios from "axios";
 export default class CreateDayService{
 
     getCreateDay(){
-        return axios.get("http://localhost:8080/api/createDay/getall");
+        return axios.get("https://golden-day-2022.herokuapp.com/api/createDay/getall");
     }
     postCreateDay(values){
-         return axios.post("http://localhost:8080/api/createDay/add",values)
+         return axios.post("https://golden-day-2022.herokuapp.com/add",values)
     }
 
     getByUserId(id){
-          return axios.get("http://localhost:8080/api/createDay/getByuserId?id="+id)
+          return axios.get("https://golden-day-2022.herokuapp.com/api/createDay/getByuserId?id="+id)
     }
 }
